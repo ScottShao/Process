@@ -22,6 +22,7 @@ public class Sampling {
 		try {
 				br = new BufferedReader(new FileReader("final.txt"));
 				String line;
+				int lineNum = 0;
 				while ((line = br.readLine()) != null) {
 					String[] words = line.split(" ");
 					int src = Integer.parseInt(words[0]);
@@ -40,6 +41,10 @@ public class Sampling {
 						incomingEdges.put(dst, pair);
 					}
 					pair.put(src, label);
+				}
+				lineNum++;
+				if (lineNum % 10000 == 0) {
+					System.out.println("Processing line num:" + lineNum);
 				}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

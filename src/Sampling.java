@@ -26,8 +26,8 @@ public class Sampling {
 				while ((line = br.readLine()) != null) {
 					String[] words = line.split(" ");
 					int src = Integer.parseInt(words[0]);
-					int dst = Integer.parseInt(words[2]);
-					int label = Integer.parseInt(words[1]);
+					int dst = Integer.parseInt(words[1]);
+					int label = Integer.parseInt(words[2]);
 					Map<Integer, Integer> pair = outgoingEdges.get(src);
 					if (pair == null) {
 						pair = new HashMap<>();

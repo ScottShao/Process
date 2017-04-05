@@ -37,8 +37,8 @@ public class ID2Name {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				String[] words = line.split(" ");
-				System.out.println(line);
-				res.put(Integer.parseInt(words[1]), words[0]);
+				int id = Integer.parseInt(words[words.length - 1]);
+				res.put(id, line.substring(0, line.length() - words[words.length - 1].length()));
 			}
 		}
 		

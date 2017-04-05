@@ -19,7 +19,7 @@ public class ID2Name {
 		Map<Integer, String> entityMapping = loadMapping("entityMapping.txt");
 		Map<Integer, String> predicateMapping = loadMapping("predicatesMapping.txt");
 		
-		try (BufferedReader br = new BufferedReader(new FileReader("args[0]"))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(args[0]))) {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				String[] words = line.split(" ");

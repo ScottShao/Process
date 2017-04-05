@@ -19,10 +19,10 @@ public class Sampling {
 		Map<Integer, Map<Integer, Integer>> outgoingEdges = new HashMap<>();
 		Map<Integer, Map<Integer, Integer>> incomingEdges = new HashMap<>();
 		BufferedReader br = null;
+		int lineNum = 0;
 		try {
 				br = new BufferedReader(new FileReader("final.txt"));
 				String line;
-				int lineNum = 0;
 				while ((line = br.readLine()) != null) {
 					String[] words = line.split(" ");
 					int src = Integer.parseInt(words[0]);
@@ -41,10 +41,10 @@ public class Sampling {
 						incomingEdges.put(dst, pair);
 					}
 					pair.put(src, label);
-				}
-				lineNum++;
-				if (lineNum % 10000 == 0) {
-					System.out.println("Processing line num:" + lineNum);
+					lineNum++;
+					if (lineNum % 10000 == 0) {
+						System.out.println("Processing line num:" + lineNum);
+					}
 				}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -59,7 +59,6 @@ public class Sampling {
 			}
 		}
 		Random rnd = new Random();
-		System.out.println(outgoingEdges.size());
 		int startingNode = rnd.nextInt(outgoingEdges.size());
 		int MAX_OUT_DEGREE = 5;
 		int MAX_IN_DEGREE = 5;

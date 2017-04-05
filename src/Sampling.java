@@ -38,7 +38,7 @@ public class Sampling {
 					pair = incomingEdges.get(dst);
 					if (pair == null) {
 						pair = new HashMap<>();
-						incomingEdges.put(src, pair);
+						incomingEdges.put(dst, pair);
 					}
 					pair.put(src, label);
 					lineNum++;
@@ -58,6 +58,7 @@ public class Sampling {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("starting sampling");
 		Random rnd = new Random();
 		int startingNode = rnd.nextInt(outgoingEdges.size());
 		int MAX_OUT_DEGREE = 5;
@@ -87,7 +88,7 @@ public class Sampling {
 					}
 					System.out.println("writing edge " + edgeNum);
 					queue.add(en.getKey());
-					bw.write(en.getKey() + " " + id + " " + en.getValue());
+					bw.write(id + " " + en.getKey() + " " + en.getValue());
 					bw.newLine();
 				}
 			}
@@ -103,7 +104,7 @@ public class Sampling {
 					}
 					System.out.println("writing edge " + edgeNum);
 					queue.add(en.getKey());
-					bw.write(id + " " + en.getKey() + " " + en.getValue());
+					bw.write( en.getKey() + " " + id + " " + en.getValue());
 					bw.newLine();
 				}
 			}

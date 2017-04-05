@@ -21,7 +21,7 @@ public class Sampling {
 		BufferedReader br = null;
 		int lineNum = 0;
 		try {
-				br = new BufferedReader(new FileReader("final.txt"));
+				br = new BufferedReader(new FileReader("graph.txt"));
 				String line;
 				while ((line = br.readLine()) != null) {
 					String[] words = line.split(" ");

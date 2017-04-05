@@ -42,7 +42,7 @@ public class Sampling {
 					}
 					pair.put(src, label);
 					lineNum++;
-					if (lineNum % 10000 == 0) {
+					if (lineNum % 100000 == 0) {
 						System.out.println("Processing line num:" + lineNum);
 					}
 				}

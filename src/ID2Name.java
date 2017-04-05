@@ -37,6 +37,7 @@ public class ID2Name {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				String[] words = line.split(" ");
+				System.out.println(line);
 				res.put(Integer.parseInt(words[1]), words[0]);
 			}
 		}

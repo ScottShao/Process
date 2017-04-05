@@ -78,31 +78,35 @@ public class Sampling {
 		while (!queue.isEmpty()) {
 			int id = queue.poll();
 			Map<Integer, Integer> edges = outgoingEdges.get(id);
-			int index = 0;
-			for (Entry<Integer, Integer> en : edges.entrySet()) {
-				if (index++ >= MAX_OUT_DEGREE) break;
-				if (edgeNum++ > MAX_EDGE_NUM) {
-					finished = true;
-					break;
+			if (edges != null) {
+				int index = 0;
+				for (Entry<Integer, Integer> en : edges.entrySet()) {
+					if (index++ >= MAX_OUT_DEGREE) break;
+					if (edgeNum++ > MAX_EDGE_NUM) {
+						finished = true;
+						break;
+					}
+					System.out.println("writing edge " + edgeNum);
+					queue.add(en.getKey());
+					bw.write(id + " " + en.getKey() + " " + en.getValue());
+					bw.newLine();
 				}
-				System.out.println("writing edge " + edgeNum);
-				queue.add(en.getKey());
-				bw.write(id + " " + en.getKey() + " " + en.getValue());
-				bw.newLine();
 			}
 			if (finished) break;
 			edges = incomingEdges.get(id);
-			index = 0;
-			for (Entry<Integer, Integer> en : edges.entrySet()) {
-				if (index++ >= MAX_IN_DEGREE) break;
-				if (edgeNum++ > MAX_EDGE_NUM) {
-					finished = true;
-					break;
+			if (edges != null) {
+				int index = 0;
+				for (Entry<Integer, Integer> en : edges.entrySet()) {
+					if (index++ >= MAX_IN_DEGREE) break;
+					if (edgeNum++ > MAX_EDGE_NUM) {
+						finished = true;
+						break;
+					}
+					System.out.println("writing edge " + edgeNum);
+					queue.add(en.getKey());
+					bw.write(id + " " + en.getKey() + " " + en.getValue());
+					bw.newLine();
 				}
-				System.out.println("writing edge " + edgeNum);
-				queue.add(en.getKey());
-				bw.write(id + " " + en.getKey() + " " + en.getValue());
-				bw.newLine();
 			}
 			if (finished) break;
 		}
